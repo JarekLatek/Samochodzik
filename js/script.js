@@ -45,19 +45,20 @@ function carModel(carBrand, modelName, carMilage) {
         return this.milage;
     };
     this.el = document.createElement('span');
-    this.append =  function() {
+    this.append = () => {
         this.el.innerHTML = ` ${this.model} `;
         document.body.appendChild(this.el);
     }
-    this.hide = function() {
+    this.hide = () => {
         this.el.style.display = 'none';
     }
-    this.show = function() {
+    this.show = () => {
         this.el.style.display = 'inline-block';
     }
-    this.remove = function() {
+    this.remove = () => {
         this.el.parentNode.removeChild(this.el);
     }
+    this.el.addEventListener('click', this.hide)
 }
 
 let maluch = new carModel('fiat', "Panda", 30);

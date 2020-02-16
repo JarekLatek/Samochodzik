@@ -9,33 +9,70 @@ const downCar = 270
 const leftCar = 0
 const rightCar = 180
 
-// Dodać bak, funkcja tankowania ma dodawać 5 do baku, funkcja wyświetlania nazwy samochodu
+// Dodać bak, funkcja tankowania ma dodawać 5 do baku, funkcja wyświetlania nazwy samochodu - JEST
 
-function carModel(model, przebieg, bak) {
-    this.model = model,
-    this.przebieg = przebieg,
-    this.bak = bak,
-    this.jedz = function() {
-        this.przebieg += 5;
-        return this.przebieg;
+// function carModel(model, przebieg, bak) {
+//     this.model = model,
+//     this.przebieg = przebieg,
+//     this.bak = bak,
+//     this.jedz = function() {
+//         this.przebieg += 5;
+//         return this.przebieg;
+//     }
+//     this.tankuj = function() {
+//         this.bak +=5;
+//         return this.bak;
+//     }
+//     this.nazwa = function() {
+//         this.model = model;
+//         return this.model;
+//     }
+// }
+
+// let maluch = new carModel('fiat', 1000, 30);
+// let polonez = new carModel('FSO', 6000, 20);
+
+// maluch.jedz()
+
+// dodać funkcję która po wywołaniu doda span do html-a z nazą modelu
+
+function carModel(carBrand, modelName, carMilage) {
+    this.brand = carBrand;
+    this.model = modelName;
+    this.milage = carMilage;
+    this.go = function() {
+        this.milage += 5;
+        return this.milage;
+    };
+    this.el = document.createElement('span');
+    this.append =  function() {
+        this.el.innerHTML = ` ${this.model} `;
+        document.body.appendChild(this.el);
     }
-    this.tankuj = function() {
-        this.bak +=5;
-        return this.bak;
+    this.hide = function() {
+        this.el.style.display = 'none';
     }
-    this.nazwa = function() {
-        this.model = model;
-        return this.model;
+    this.show = function() {
+        this.el.style.display = 'inline-block';
+    }
+    this.remove = function() {
+        this.el.parentNode.removeChild(this.el);
     }
 }
 
-let maluch = new carModel('fiat', 1000, 30);
-let polonez = new carModel('FSO', 6000, 20);
+let maluch = new carModel('fiat', "Panda", 30);
+let polonez = new carModel('FSO', "polonez", 20);
+let opel = new carModel('opel', "astra", 20);
+let renault = new carModel('renault', "laguna", 20);
+let seat = new carModel('seat', "Ibiza", 20);
+let skoda = new carModel('skoda', "Octavia", 20);
 
-maluch.jedz()
-
-
-
+maluch.append();
+polonez.append();
+opel.append();
+renault.append();
+seat.append();
+skoda.append();
 
 
 

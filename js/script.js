@@ -3,6 +3,7 @@ const down = document.getElementById("down");
 const left = document.getElementById("left");
 const right = document.getElementById("right");
 const fuel = document.getElementById("fuel");
+const canister = document.getElementById("canister");
 const upCar = 90
 const downCar = 270
 const leftCar = 0
@@ -39,8 +40,8 @@ const gasTank = () => {
   myCar.tank = 50;
 }
 const fillFromCanister = () => {
-    if((myCar.x < 100 && myCar.x > 0) && (myCar.y < 100 && myCar.y > 0) )
-    myCar.tank = 50;
+    if(myCar.tank < 45) 
+    myCar.tank += 5;
   }
 
 const carReposition = (positionChangeX, positionChangeY, rotation) => {
@@ -52,6 +53,7 @@ const carReposition = (positionChangeX, positionChangeY, rotation) => {
     myCar.car.style.transform = `rotate(${rotation}deg)`;
     combustion();
     gasTank();
+    fillFromCanister();
     fuel.innerHTML = myCar.tank;
   }
 }

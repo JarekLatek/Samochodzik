@@ -40,8 +40,9 @@ const gasTank = () => {
   myCar.tank = 50;
 }
 const fillFromCanister = () => {
-    if(myCar.tank < 45) 
-    myCar.tank += 5;
+    if(myCar.tank < 45) {
+        myCar.tank += 5;
+    }
   }
 
 const carReposition = (positionChangeX, positionChangeY, rotation) => {
@@ -53,11 +54,11 @@ const carReposition = (positionChangeX, positionChangeY, rotation) => {
     myCar.car.style.transform = `rotate(${rotation}deg)`;
     combustion();
     gasTank();
-    fillFromCanister();
     fuel.innerHTML = myCar.tank;
   }
 }
 carReposition(0, 0, leftCar);
+fillFromCanister();
 
 
 
@@ -74,5 +75,5 @@ up.addEventListener("click", () => {carReposition(0, -3, upCar)});
 down.addEventListener("click", () =>{carReposition(0, 3, downCar)});
 left.addEventListener("click", () =>{carReposition(-3, 0, leftCar)});
 right.addEventListener("click", () =>{carReposition(3, 0, rightCar)});
-fillFromCanister.addEventListener("click", fillFromCanister);
+canister.addEventListener("click", fillFromCanister);
 document.addEventListener("keydown", (e) =>{keyboard(e)});
